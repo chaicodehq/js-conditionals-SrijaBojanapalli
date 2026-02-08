@@ -8,11 +8,11 @@
  *
  * Advisory Rules (check in this exact order):
  *   - temp >= 35              → "Too hot for hiking - stay indoors and hydrate"
- *   - temp >= 25 and no rain  → "Great weather for hiking - don't forget sunscreen"
+ *   - temp >= 25 and not raining  → "Great weather for hiking - don't forget sunscreen"
  *   - temp >= 25 and raining  → "Warm but rainy - consider indoor activities"
- *   - temp >= 15 and no rain  → "Perfect hiking weather - enjoy the trails"
+ *   - temp >= 15 and not raining  → "Perfect hiking weather - enjoy the trails"
  *   - temp >= 15 and raining  → "Cool and rainy - bring waterproof gear if hiking"
- *   - temp >= 5 and no rain   → "Chilly - wear layers for your hike"
+ *   - temp >= 5 and not raining   → "Chilly - wear layers for your hike"
  *   - temp >= 5 and raining   → "Cold and wet - best to stay indoors"
  *   - temp < 5                → "Too cold - stay warm indoors"
  *
@@ -21,5 +21,36 @@
  * @returns {string} The weather advisory message
  */
 export function getWeatherAdvice(temperature, isRaining) {
+
+  var advice = "Too cold - stay warm indoors";
   // Your code here
+  if (temperature >= 35) {
+    advice = "Too hot for hiking - stay indoors and hydrate";
+   
+  }
+  else if (temperature >= 25 && !isRaining) {
+    advice = "Great weather for hiking - don't forget sunscreen"
+  }
+  else if (temperature >= 25 && isRaining) {
+    advice = "Warm but rainy - consider indoor activities";
+  }
+  else if (temperature >= 15 && !isRaining) {
+    advice = "Perfect hiking weather - enjoy the trails";
+  }
+  else if (temperature >= 15 && isRaining) {
+    advice = "Cool and rainy - bring waterproof gear if hiking";
+  }
+  else if (temperature >= 5 && !isRaining) {
+    advice = "Chilly - wear layers for your hike";
+  }
+  else if (temperature >= 5 && isRaining) {
+    advice = "Cold and wet - best to stay indoors";
+  }
+  else if (temperature < 5) {
+    advice = "Too cold - stay warm indoors";
+  }
+  else {
+    return;
+  }
+  return advice
 }
