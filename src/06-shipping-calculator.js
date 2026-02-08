@@ -29,5 +29,63 @@
  * @returns {number} Shipping cost, 0 for free shipping, or -1 for invalid input
  */
 export function calculateShipping(weight, country, orderTotal) {
+  //    * Domestic Shipping (country === "US"):
+  //  *   - Weight up to 1 kg:   $5
+  //  *   - Weight up to 5 kg:   $10
+  //  *   - Weight over 5 kg:    $15
+  //  *
+  //  * International Shipping (any other country):
+  //  *   - Weight up to 1 kg:   $15
+  //  *   - Weight up to 5 kg:   $25
+  //  *   - Weight over 5 kg:    $40
+  //  *
+  //  * Free Shipping:
+  //  *   - Domestic orders over $50 get FREE shipping (return 0)
+  //  *   - International orders over $100 get FREE shipping (return 0)
+  //  *
+  var shippingCost = -1;
   // Your code here
+  if (weight > 0 && orderTotal > 0) {
+
+    if (country === "US") {
+      if (orderTotal > 50) {
+        shippingCost = 0
+      }
+      else if (weight > 5 ) {
+        shippingCost = 15
+      }
+      else if (weight <= 5 && weight > 1) {
+        shippingCost = 10
+      }
+      else if (weight <= 1) {
+        shippingCost = 5
+      }
+      else {
+        return;
+      }
+
+    }
+    else {
+
+      if (orderTotal > 100) {
+        shippingCost = 0
+      }
+      else if (weight > 5) {
+        shippingCost = 40
+      }
+      else if (weight <= 5 && weight > 1) {
+        shippingCost = 25
+      }
+      else if (weight <= 1) {
+        shippingCost = 15
+      } else {
+        return;
+      }
+
+    }
+
+  }
+
+
+  return shippingCost;
 }
