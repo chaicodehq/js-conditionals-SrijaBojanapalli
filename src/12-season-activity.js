@@ -31,5 +31,61 @@
  * @returns {{ season: string, activity: string } | null}
  */
 export function getSeasonActivity(month, temperature) {
-  // Your code here
+
+
+  let currentMonth = null;
+  let activity = '';
+
+  let result = null;
+
+  if (month == 12 || month == 1 || month == 2) {
+    currentMonth = "Winter"
+  }
+  else if (month == 3 || month == 4 || month == 5) {
+    currentMonth = "Spring"
+  }
+  else if (month == 6 || month == 7 || month == 8) {
+    currentMonth = "Summer"
+  }
+  else if (month == 9 || month == 10 || month == 11) {
+    currentMonth = "Autumn"
+  }
+  else {
+    result = null
+  }
+
+
+  if (currentMonth == "Winter" && temperature < 0) {
+    activity = "skiing"
+  }
+  else if (currentMonth == "Winter" && temperature >= 0) {
+    activity = "ice skating"
+  }
+  else if (currentMonth == "Spring" && temperature > 20) {
+    activity = "hiking"
+  }
+  else if (currentMonth == "Spring" && temperature <= 20) {
+    activity = "museum visit"
+  }
+  else if (currentMonth == "Summer" && temperature > 35) {
+    activity = "swimming"
+  }
+  else if (currentMonth == "Summer" && temperature <= 35) {
+    activity = "cycling"
+  }
+  else if (currentMonth == "Autumn" && temperature > 15) {
+    activity = "nature walk"
+  }
+  else if (currentMonth == "Autumn" && temperature <= 15) {
+    activity = "reading at a cafe"
+  }
+  else {
+    activity = ''
+  }
+  
+  
+  if (currentMonth != null)
+    return { season: currentMonth, activity: activity }
+  else
+    return null;
 }

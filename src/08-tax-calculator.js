@@ -26,5 +26,28 @@
  * @returns {number} Total tax amount owed
  */
 export function calculateTax(income) {
+//    *   Bracket 1: $0 – $10,000        → 0%  (tax-free!)
+//  *   Bracket 2: $10,001 – $30,000   → 10% (only on the amount ABOVE $10,000)
+//  *   Bracket 3: $30,001 – $70,000   → 20% (only on the amount ABOVE $30,000)
+//  *   Bracket 4: Over $70,000        → 30% (only on the amount ABOVE $70,000)
+//  *
   // Your code here
+  let tax = 0;
+
+  if(income >=0){
+
+    if(income <= 10000){
+      tax = 0;
+    }
+    else if(income > 10000  && income <= 30000){
+      tax = (income - 10000) * (0.10);
+    }
+     else if(income > 30000  && income <= 70000){
+      tax = (2000) + ((income - 30000) * (0.20));
+    }
+     else if(income > 70000){
+      tax = (2000) + (8000) + ((income - 70000) * (0.30));
+    }
+  }
+  return tax;
 }
